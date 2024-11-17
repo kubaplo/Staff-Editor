@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define colors used in the project */
+:root {
+  --primary: #F2F9F1;
+  --secondary: #5C715E;
+  --dark: #1E1E1E;
+}
