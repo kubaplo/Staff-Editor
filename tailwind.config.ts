@@ -11,6 +11,7 @@ const config: Config = {
         primary: "var(--primary)",
         secondary: "var(--secondary)",
         dark: "var(--dark)",
+        inactive: "var(--inactive)",
       },
 
       boxShadow: {
