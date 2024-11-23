@@ -8,4 +8,10 @@
   --secondary: #5C715E;
   --dark: #1E1E1E;
   --inactive: #C1C1C1;
+   --hover: #353535;
+
+}
+
+.gradient-fade {
+  background: linear-gradient(90deg, transparent 0%, var(--dark) 50%, transparent 100%);
 }

@@ -12,10 +12,20 @@ const config: Config = {
         secondary: "var(--secondary)",
         dark: "var(--dark)",
         inactive: "var(--inactive)",
+        hover: "var(--hover)",
       },
 
       boxShadow: {
         'header': '3px 3px 15px 5px rgba(0, 0, 0, 0.3)',
+      },
+
+      zIndex: {
+        '20': '20',
+        '30': '30',
+      },
+
+      height: {
+        '18': '4.5rem',
       },
     },
   },
