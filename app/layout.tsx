@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
+import { Inter } from 'next/font/google';
 import "@/ui/globals.css";
+
+const inter = Inter({
+  subsets: ['latin']
+});
 
 export const metadata: Metadata = {
   title: "Staff Editor",
@@ -9,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   return (
     <html lang="en">
-      <body className={`text-dark antialiased`}>
+      <body className={`${inter.className} text-dark antialiased`}>
         {children}
       </body>
     </html>
