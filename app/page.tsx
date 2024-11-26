@@ -3,6 +3,7 @@
 // Components
 import Header from "@/ui/components/Header/Header";
 import SelectionBox from "@/ui/components/SelectionBox/SelectionBox";
+import Playback from "@/ui/components/Playback/Playback";
 
 // Icons
 import WholeNote from "@/ui/svg/Notes/WholeNote";
@@ -44,10 +45,13 @@ export default function Home() {
   return (
     <>
     <Header />
-    <main className="w-full h-screen bg-primary pt-32">
+    <main className="flex flex-col items-center gap-y-20 w-full h-screen bg-primary pt-32">
       <div className="flex justify-center items-center gap-10">
         <SelectionBox title="Notes" items={NOTES} />
         <SelectionBox title="Rests" items={RESTS} />
+      </div>
+      <div className="flex justify-center items-center">
+        <Playback />
       </div>
     </main>
     </>
