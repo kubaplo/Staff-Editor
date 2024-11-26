@@ -3,9 +3,6 @@
 // React
 import React, { Fragment, useState } from 'react';
 
-// Clsx
-import clsx from 'clsx';
-
 // Framer Motion
 import { motion } from 'framer-motion';
 
@@ -35,7 +32,7 @@ export default function SelectionBox({title, items}: SelectionBoxPropsType) {
               <item.icon className="h-10 w-auto fill-dark z-[1]" />
               {
                 (selectedItem === item) ?
-                <motion.div layoutId="background" className="absolute top-0 left-0 size-full border-[3px] border-secondary rounded">
+                <motion.div layoutId={`background-${title}`} className="absolute top-0 left-0 size-full border-[3px] border-secondary rounded">
                   <div className="size-full bg-secondary opacity-25"></div>
                 </motion.div> : null
               }
