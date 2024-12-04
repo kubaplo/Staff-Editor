@@ -21,6 +21,7 @@ import SixteenthRest from "@/ui/svg/Rests/SixteenthRest";
 import ThirtySecondRest from "@/ui/svg/Rests/ThirtySecondRest";
 import SixtyFourthRest from "@/ui/svg/Rests/SixtyFourthRest";
 
+
 const NOTES = [
   {name: 'whole note', icon: WholeNote},
   {name: 'half note', icon: HalfNote},
@@ -44,16 +45,16 @@ const RESTS = [
 export default function Home() {
   return (
     <>
-    <Header />
-    <main className="flex flex-col items-center gap-y-20 w-full h-screen bg-primary pt-32">
-      <div className="flex justify-center items-center gap-10">
-        <SelectionBox title="Notes" items={NOTES} />
-        <SelectionBox title="Rests" items={RESTS} />
-      </div>
-      <div className="flex justify-center items-center">
-        <Playback />
-      </div>
-    </main>
+      <Header />
+      <main className="flex flex-col items-center gap-y-20 w-full h-screen bg-primary bg-[url('/background_image.svg')] bg-cover bg-center pt-32">
+        <div className="flex justify-center items-center gap-10">
+          <SelectionBox title="Notes" items={NOTES} />
+          <SelectionBox title="Rests" items={RESTS} />
+        </div>
+        <div className="flex justify-center items-center">
+          <Playback />
+        </div>
+      </main>
     </>
   );
 }
