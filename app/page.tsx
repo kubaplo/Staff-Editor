@@ -4,6 +4,7 @@
 import Header from "@/ui/components/Header/Header";
 import SelectionBox from "@/ui/components/SelectionBox/SelectionBox";
 import Playback from "@/ui/components/Playback/Playback";
+import Footer from "@/ui/components/Footer/Footer"; // Import Footer
 
 // Icons
 import WholeNote from "@/ui/svg/Notes/WholeNote";
@@ -21,40 +22,40 @@ import SixteenthRest from "@/ui/svg/Rests/SixteenthRest";
 import ThirtySecondRest from "@/ui/svg/Rests/ThirtySecondRest";
 import SixtyFourthRest from "@/ui/svg/Rests/SixtyFourthRest";
 
-
 const NOTES = [
-  {name: 'whole note', icon: WholeNote},
-  {name: 'half note', icon: HalfNote},
-  {name: 'quarter note', icon: QuarterNote},
-  {name: 'eighth note', icon: EighthNote},
-  {name: 'sixteenth note', icon: SixteenthNote},
-  {name: 'thirty-second note', icon: ThirtySecondNote},
-  {name: 'sixty-fourth note', icon: SixtyFourthNote},
+  { name: 'whole note', icon: WholeNote },
+  { name: 'half note', icon: HalfNote },
+  { name: 'quarter note', icon: QuarterNote },
+  { name: 'eighth note', icon: EighthNote },
+  { name: 'sixteenth note', icon: SixteenthNote },
+  { name: 'thirty-second note', icon: ThirtySecondNote },
+  { name: 'sixty-fourth note', icon: SixtyFourthNote },
 ];
 
 const RESTS = [
-  {name: 'whole rest', icon: WholeRest},
-  {name: 'half rest', icon: HalfRest},
-  {name: 'quarter rest', icon: QuarterRest},
-  {name: 'eighth rest', icon: EighthRest},
-  {name: 'sixteenth rest', icon: SixteenthRest},
-  {name: 'thirty-second rest', icon: ThirtySecondRest},
-  {name: 'sixty-fourth rest', icon: SixtyFourthRest},
+  { name: 'whole rest', icon: WholeRest },
+  { name: 'half rest', icon: HalfRest },
+  { name: 'quarter rest', icon: QuarterRest },
+  { name: 'eighth rest', icon: EighthRest },
+  { name: 'sixteenth rest', icon: SixteenthRest },
+  { name: 'thirty-second rest', icon: ThirtySecondRest },
+  { name: 'sixty-fourth rest', icon: SixtyFourthRest },
 ];
 
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-col h-screen">
       <Header />
-      <main className="flex flex-col items-center gap-y-20 w-full h-screen bg-primary bg-[url('/background_image.svg')] bg-cover bg-center pt-32">
+      <main className="flex-1 flex flex-col justify-center items-center bg-primary bg-[url('/background_image.svg')] bg-cover bg-center">
         <div className="flex justify-center items-center gap-10">
           <SelectionBox title="Notes" items={NOTES} />
           <SelectionBox title="Rests" items={RESTS} />
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mt-10">
           <Playback />
         </div>
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }
