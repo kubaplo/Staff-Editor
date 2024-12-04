@@ -4,7 +4,8 @@
 import Header from "@/ui/components/Header/Header";
 import SelectionBox from "@/ui/components/SelectionBox/SelectionBox";
 import Playback from "@/ui/components/Playback/Playback";
-import Footer from "@/ui/components/Footer/Footer"; // Import Footer
+import Footer from "@/ui/components/Footer/Footer";
+import CookiesPopup from "@/ui/components/CookiesPopup/CookiesPopup";
 
 // Icons
 import WholeNote from "@/ui/svg/Notes/WholeNote";
@@ -56,6 +57,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <CookiesPopup />
     </div>
   );
 }
