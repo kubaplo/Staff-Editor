@@ -4,14 +4,66 @@
 
 /* Define colors used in the project */
 :root {
-  --primary: #F2F9F1;
-  --secondary: #5C715E;
-  --dark: #1E1E1E;
-  --inactive: #C1C1C1;
-   --hover: #353535;
+	--primary: #f2f9f1;
+	--secondary: #5c715e;
+	--dark: #1e1e1e;
+	--inactive: #c1c1c1;
+	--hover: #353535;
 
+	/* Playback colors , do ogarniecia */
+	--playback-line: #0d9488;
+	--playback-glow: rgba(13, 148, 136, 0.5);
+	--note-hover: #0ba333;
+	--note-playing: #0ba333;
+	--preview-valid: #07eb44;
+	--preview-invalid: #ef4444;
 }
 
 .gradient-fade {
-  background: linear-gradient(90deg, transparent 0%, var(--dark) 50%, transparent 100%);
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--dark) 50%,
+		transparent 100%
+	);
+}
+
+.playback-line-gradient {
+	background: linear-gradient(
+		to bottom,
+		transparent 0%,
+		var(--playback-line) 20%,
+		var(--playback-line) 80%,
+		transparent 100%
+	);
+}
+
+.preview-line-gradient {
+	background: linear-gradient(
+		to right,
+		transparent 0%,
+		var(--preview-valid) 20%,
+		var(--preview-valid) 80%,
+		transparent 100%
+	);
+}
+
+.preview-line-gradient-invalid {
+	background: linear-gradient(
+		to right,
+		transparent 0%,
+		var(--preview-invalid) 20%,
+		var(--preview-invalid) 80%,
+		transparent 100%
+	);
+}
+
+.boundary-line-gradient {
+	background: linear-gradient(
+		to bottom,
+		transparent 0%,
+		var(--preview-invalid) 45%,
+		var(--preview-invalid) 55%,
+		transparent 100%
+	);
 }
