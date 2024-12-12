@@ -10,6 +10,8 @@ import SelectionBox from "@/ui/components/SelectionBox/SelectionBox";
 import Playback from "@/ui/components/Playback/Playback";
 import Staff from "@/ui/components/Staff/Staff";
 import { NoteType } from "@/ui/components/Staff/utils/types";
+import Footer from "@/ui/components/Footer/Footer";
+import CookiesPopup from "@/ui/components/CookiesPopup/CookiesPopup";
 
 // Constants
 import { NOTES, RESTS } from "@/ui/components/Staff/utils/constants";
@@ -372,7 +374,9 @@ export default function Home() {
 	return (
 		<>
 			<Header />
-			<main className="flex flex-col items-center gap-y-20 w-screen min-h-screen bg-primary pt-32 pb-20">
+
+			{/* Trzbea dodac to tlo svg  */}
+			<main className="flex flex-col items-center gap-y-20 w-full min-h-screen bg-primary pt-32">
 				<div className="sticky top-24 z-10 w-full bg-primary ">
 					<div className="flex flex-col items-center gap-6">
 						<div className="flex justify-center items-center gap-10">
@@ -417,10 +421,12 @@ export default function Home() {
 				</div>
 				<button
 					onClick={() => loadFurElise(setNotes)}
-					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+					className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-xl"
 				>
-					Load Für Elise (na test, do usuniecia)
+					Load &quot;Dla Elizy&quot; (na test, do usuniecia pozniej)
 				</button>
+				<CookiesPopup />
+				<Footer />
 			</main>
 		</>
 	);
