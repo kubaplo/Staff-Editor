@@ -16,9 +16,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="en">
-			<body
-				className={`${inter.className} text-dark antialiased bg-primary flex flex-col min-h-screen`}
-			>
+			<body className={`${inter.className} text-dark antialiased`}>
 				{children}
 			</body>
 		</html>
