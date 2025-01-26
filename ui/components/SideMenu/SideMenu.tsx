@@ -1,5 +1,8 @@
 "use client";
 
+import { musicExporter } from "@/ui/components/Staff/hooks/musicExporter";
+import { useLocalStorage } from "@/ui/components/Staff/hooks/useLocalStorage";
+
 // Framer Motion
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -16,6 +19,35 @@ type SideMenuProps = {
 };
 
 export default function SideMenu({ isOpen, onClose }: SideMenuProps) {
+	const { notes, setNotes, clearNotes } = useLocalStorage();
+
+	
+	// Funkcja eksportu MIDI
+	const handleExportMIDI = () => {
+		const midiBlob = musicExporter.exportToMIDI(notes);
+
+		// Tworzymy link do pobrania pliku
+		const url = URL.createObjectURL(midiBlob);
+		const a = document.createElement("a");
+		a.href = url;
+		a.download = "composition.mid";
+		a.click();
+		URL.revokeObjectURL(url);
+	};
+
+	// Funkcja eksportu WAV
+	const handleExportWAV = async () => {
+		const wavBlob = await musicExporter.exportToWAV(notes);
+
+		// Tworzymy link do pobrania pliku
+		const url = URL.createObjectURL(wavBlob);
+		const a = document.createElement("a");
+		a.href = url;
+		a.download = "composition.wav";
+		a.click();
+		URL.revokeObjectURL(url);
+	};
+
 	return (
 		<AnimatePresence>
 			{isOpen && (
@@ -92,6 +124,7 @@ export default function SideMenu({ isOpen, onClose }: SideMenuProps) {
 								<h3 className="text-3xl mb-10 text-center">Export Data</h3>
 								<div className="flex flex-col items-center gap-4">
 									<button
+										onClick={handleExportMIDI}
 										className="w-64 h-18 px-6 bg-dark text-white rounded-xl hover:bg-hover transition-colors flex items-center gap-3"
 										aria-label="Export to MIDI format"
 									>
@@ -101,6 +134,7 @@ export default function SideMenu({ isOpen, onClose }: SideMenuProps) {
 										<span className="flex-1 text-center">Export to .MIDI</span>
 									</button>
 									<button
+										onClick={handleExportWAV}
 										className="w-64 h-18 px-6 bg-dark text-white rounded-xl hover:bg-hover transition-colors flex items-center gap-3"
 										aria-label="Export to WAV format"
 									>

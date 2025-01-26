@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLocalStorage } from "@/ui/components/Staff/hooks/useLocalStorage";
 import TrashContainer from "@/ui/components/Staff/components/TrashContainer";
+import { musicExporter } from "@/ui/components/Staff/hooks/musicExporter";
 
 // Components
 import Header from "@/ui/components/Header/Header";
@@ -12,6 +13,8 @@ import Staff from "@/ui/components/Staff/Staff";
 import { NoteType } from "@/ui/components/Staff/utils/types";
 import Footer from "@/ui/components/Footer/Footer";
 import CookiesPopup from "@/ui/components/CookiesPopup/CookiesPopup";
+import ExportMidi from "@/ui/svg/ExportMidi";
+import ExportWav from "@/ui/svg/ExportWav";
 
 // Constants
 import { NOTES, RESTS } from "@/ui/components/Staff/utils/constants";
