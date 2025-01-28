@@ -25,6 +25,7 @@ export default function Header({notes, setNotes, clearNotes}: HeaderPropsType) {
     <>
       <header className="fixed top-0 left-0 flex justify-center items-center py-4 px-5 w-full h-24 bg-secondary shadow-header z-10">
         <button  
+          title="Settings"
           onClick={() => setIsMenuOpen(!isMenuOpen)} 
           className="absolute top-1/2 -translate-y-1/2 left-5 flex justify-center items-center"
           aria-label="Open settings"

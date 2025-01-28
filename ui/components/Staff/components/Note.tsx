@@ -15,6 +15,7 @@ function Note({ note, Icon, isPlaying, onDragStart, onDragEnd }: NoteProps) {
 
 	return (
 		<div
+			title={`${note.variant} ${note.type.slice(0, note.type.length - 1)}`}
 			className="absolute"
 			style={{
 				left: note.x,

@@ -18,9 +18,9 @@ export default function CookiePopup() {
 	if (!isVisible) return null;
 
 	return (
-		<div className="fixed inset-0 z-50 flex items-center justify-center">
+		<div className="fixed top-0 left-0 inset-0 z-50 flex items-center justify-center">
 			{/* Tło półprzezroczyste */}
-			<div className="absolute inset-0 bg-black bg-opacity-50"></div>
+			<div aria-label="background blur" className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
 
 			{/* Popup */}
 			<div className="relative w-96 bg-[#F2F9F1] shadow-lg rounded-md overflow-hidden">

@@ -79,6 +79,7 @@ export default function SelectionBox({ title, items }: SelectionBoxPropsType) {
 							)}
 
 							<div
+								title={item.name}
 								draggable
 								onDragStart={(e) => handleDragStart(e, item)}
 								onClick={() => setSelectedItem(item)}

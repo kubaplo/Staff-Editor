@@ -36,6 +36,7 @@ export default function TrashContainer({
 
 	return (
 		<div
+			title="Delete note/rest"
 			className={`w-32 h-16 border-2 rounded-lg flex items-center justify-center transition-all duration-200 ${
 				isDragOver
 					? "border-red-500 bg-red-100 scale-110"

@@ -85,6 +85,7 @@ export default function Staff({
 
 					{/* Drop area for first row */}
 					<div
+						aria-label="Staff first row"
 						className="absolute inset-0"
 						onDragOver={handleDragOver}
 						onDragLeave={handleDragLeave}
@@ -126,6 +127,7 @@ export default function Staff({
 
 					{/* Drop area for second row */}
 					<div
+						aria-label="Staff second row"
 						className="absolute inset-0"
 						onDragOver={handleDragOver}
 						onDragLeave={handleDragLeave}
