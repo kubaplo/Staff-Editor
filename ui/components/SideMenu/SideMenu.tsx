@@ -1,5 +1,9 @@
 "use client";
 
+// React
+import { useRef } from 'react';
+
+// Custom Hooks
 import { musicExporter } from "@/ui/components/Staff/hooks/musicExporter";
 import { useLocalStorage } from "@/ui/components/Staff/hooks/useLocalStorage";
 
@@ -13,14 +17,49 @@ import LoadFile from "@/ui/svg/LoadFile";
 import ExportMidi from "@/ui/svg/ExportMidi";
 import ExportWav from "@/ui/svg/ExportWav";
 
+// Types:
+import { NoteType } from '@/ui/components/Staff/utils/types';
+
+
 type SideMenuProps = {
 	isOpen: boolean;
 	onClose: () => void;
+	notes: NoteType[];
+  setNotes: React.Dispatch<React.SetStateAction<NoteType[]>>;
+  clearNotes: () => void;
 };
 
-export default function SideMenu({ isOpen, onClose }: SideMenuProps) {
-	const { notes, setNotes, clearNotes } = useLocalStorage();
+export default function SideMenu({ isOpen, onClose, notes, setNotes, clearNotes }: SideMenuProps) {
+	const localCopyUpload = useRef<HTMLInputElement | null>(null);
 
+	// Zapis układu pięciolinii do pliku w formacie JSON:
+	function handleSaveLocal() {
+		console.log(notes);
+		const file = new File([JSON.stringify(notes)], "staff.json");
+		const url = URL.createObjectURL(file);
+		
+		const a = document.createElement("a");
+		a.href = url;
+		a.download = "staff.json";
+		a.click();
+		URL.revokeObjectURL(url);
+	}
+
+	// Otwórz okno dialogowe do wczytania pliku:
+	function handleLoadLocal() {
+		if (localCopyUpload.current) {
+			localCopyUpload.current.click();
+		}
+	}
+
+	// Wczytanie układu pięciolinii z pliku w formacie JSON:
+	async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
+		const rawText = await e.target.files?.[0].text();
+		if (rawText) {
+			const loadedNotes: NoteType[] =  JSON.parse(rawText) as NoteType[];
+			setNotes(loadedNotes);
+		}
+	}
 	
 	// Funkcja eksportu MIDI
 	const handleExportMIDI = () => {
@@ -91,41 +130,44 @@ export default function SideMenu({ isOpen, onClose }: SideMenuProps) {
 
 						<div className="flex-1 overflow-y-auto px-6">
 							<div className="mb-24">
-								<h3 className="text-3xl mb-10 text-center">
+								<h3 className="text-2xl mb-10 text-center">
 									Arranging Notes on Staff
 								</h3>
 								<div className="flex flex-col items-center gap-4">
 									<button
-										className="w-64 h-18 px-6 bg-dark text-white rounded-xl hover:bg-hover transition-colors flex items-center gap-3"
+										onClick={handleSaveLocal}
+										className="w-72 h-18 px-6 bg-dark text-white rounded-xl hover:bg-hover transition-colors flex items-center gap-3"
 										aria-label="Create new XML file"
 									>
 										<div className="w-12 flex justify-center">
 											<CreateFile className="w-10 h-10 fill-white" />
 										</div>
 										<span className="flex-1 text-center ">
-											Create a Local File (.xml)
+											Create a Local Copy
 										</span>
 									</button>
 									<button
-										className="w-64 h-18 px-6 bg-dark text-white rounded-xl hover:bg-hover transition-colors flex items-center gap-3"
+										onClick={handleLoadLocal}
+										className="w-72 h-18 px-6 bg-dark text-white rounded-xl hover:bg-hover transition-colors flex items-center gap-3"
 										aria-label="Load XML file"
 									>
+										<input ref={localCopyUpload} onChange={handleFileUpload} name="localcopy-upload" type="file" accept=".json" className="absolute top-0 left-0 w-px h-px opacity-0" />
 										<div className="w-12 flex justify-center">
 											<LoadFile className="w-10 h-10 fill-white" />
 										</div>
 										<span className="flex-1 text-center">
-											Load a Local File (.xml)
+											Load a Local Copy
 										</span>
 									</button>
 								</div>
 							</div>
 
 							<div>
-								<h3 className="text-3xl mb-10 text-center">Export Data</h3>
+								<h3 className="text-2xl mb-10 text-center">Export Data</h3>
 								<div className="flex flex-col items-center gap-4">
 									<button
 										onClick={handleExportMIDI}
-										className="w-64 h-18 px-6 bg-dark text-white rounded-xl hover:bg-hover transition-colors flex items-center gap-3"
+										className="w-72 h-18 px-6 bg-dark text-white rounded-xl hover:bg-hover transition-colors flex items-center gap-3"
 										aria-label="Export to MIDI format"
 									>
 										<div className="w-12 flex justify-center">
@@ -135,7 +177,7 @@ export default function SideMenu({ isOpen, onClose }: SideMenuProps) {
 									</button>
 									<button
 										onClick={handleExportWAV}
-										className="w-64 h-18 px-6 bg-dark text-white rounded-xl hover:bg-hover transition-colors flex items-center gap-3"
+										className="w-72 h-18 px-6 bg-dark text-white rounded-xl hover:bg-hover transition-colors flex items-center gap-3"
 										aria-label="Export to WAV format"
 									>
 										<div className="w-12 flex justify-center">

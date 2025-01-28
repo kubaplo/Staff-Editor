@@ -9,8 +9,16 @@ import SideMenu from "@/ui/components/SideMenu/SideMenu";
 // Icons
 import Logo from "@/ui/svg/Logo";
 import Settings from "@/ui/svg/Settings";
+import { NoteType } from '@/ui/components/Staff/utils/types';
 
-export default function Header() {
+
+type HeaderPropsType = {
+  notes: NoteType[],
+  setNotes: React.Dispatch<React.SetStateAction<NoteType[]>>,
+  clearNotes: () => void
+};
+
+export default function Header({notes, setNotes, clearNotes}: HeaderPropsType) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -28,7 +36,7 @@ export default function Header() {
           <label className="text-4xl text-center font-bold whitespace-nowrap">Staff Editor</label>
         </div>
       </header>
-      <SideMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      <SideMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} notes={notes} setNotes={setNotes} clearNotes={clearNotes} />
     </>
   );
 }

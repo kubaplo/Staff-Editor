@@ -376,7 +376,7 @@ export default function Home() {
 
 	return (
 		<>
-			<Header />
+			<Header notes={notes} setNotes={setNotes} clearNotes={clearNotes} />
 
 			{/* Trzbea dodac to tlo svg  */}
 			<main className="flex flex-col items-center gap-y-20 w-full min-h-screen bg-primary pt-32">
@@ -424,9 +424,9 @@ export default function Home() {
 				</div>
 				<button
 					onClick={() => loadFurElise(setNotes)}
-					className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-xl"
+					className="bg-dark hover:bg-hover text-white font-bold py-2 px-4 rounded-xl"
 				>
-					Load &quot;Dla Elizy&quot; (na test, do usuniecia pozniej)
+					Load &quot;Für Elise&quot; song
 				</button>
 				<CookiesPopup />
 				<Footer />

@@ -9,7 +9,7 @@ export default function Footer() {
 			>
 				<div className="flex flex-col items-center text-center">
 					<p className="text-white text-sm font-medium">
-						© 2024 Jakub Płocidem, Jan Mierzwa, Patryk Benecki, Mateusz
+						© 2025 Jakub Płocidem, Jan Mierzwa, Patryk Benecki, Mateusz
 						Roździński
 					</p>
 					<p className="text-white text-xs font-medium">
